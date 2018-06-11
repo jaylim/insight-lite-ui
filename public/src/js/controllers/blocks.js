@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('insight.blocks').controller('BlocksController',
-  function($scope, $rootScope, $routeParams, $location, Global, Block, Blocks, BlockByHeight) {
+  function($scope, $rootScope, $routeParams, $location, Global, Block, Blocks) {
   $scope.global = Global;
   $scope.loading = false;
 
-  if ($routeParams.blockHeight) {
-    BlockByHeight.get({
-      blockHeight: $routeParams.blockHeight
-    }, function(hash) {
-      $location.path('/block/' + hash.blockHash);
-    }, function() {
-      $rootScope.flashMessage = 'Bad Request';
-      $location.path('/');
-    });
-  }
+  // if ($routeParams.blockHeight) {
+  //   BlockByHeight.get({
+  //     blockHeight: $routeParams.blockHeight
+  //   }, function(hash) {
+  //     $location.path('/block/' + hash.blockHash);
+  //   }, function() {
+  //     $rootScope.flashMessage = 'Bad Request';
+  //     $location.path('/');
+  //   });
+  // }
 
   //Datepicker
   var _formatTimestamp = function (date) {

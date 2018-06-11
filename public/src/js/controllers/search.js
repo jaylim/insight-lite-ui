@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('insight.search').controller('SearchController',
-  function($scope, $routeParams, $location, $timeout, Global, Block, Transaction, Address, BlockByHeight) {
+  function($scope, $routeParams, $location, $timeout, Global, Block, Transaction, Address) {
   $scope.global = Global;
   $scope.loading = false;
 
@@ -42,15 +42,17 @@ angular.module('insight.search').controller('SearchController',
           $location.path('address/' + q);
         }, function() { // block by height not found
           if (isFinite(q)) { // ensure that q is a finite number. A logical height value.
-            BlockByHeight.get({
-              blockHeight: q
-            }, function(hash) {
-              _resetSearch();
-              $location.path('/block/' + hash.blockHash);
-            }, function() { //not found, fail :(
-              $scope.loading = false;
-              _badQuery();
-            });
+            // BlockByHeight.get({
+            //   blockHeight: q
+            // }, function(hash) {
+            //   _resetSearch();
+            //   $location.path('/block/' + hash.blockHash);
+            // }, function() { //not found, fail :(
+            //   $scope.loading = false;
+            //   _badQuery();
+            // });
+            $scope.loading = false;
+            _badQuery();
           }
           else {
             $scope.loading = false;
