@@ -1,7 +1,7 @@
 {
   "name": "insight-unihash-ui",
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the litecoin network and build your own services with it.",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "repository": "git://github.com/jaylim/insight-unihash-ui.git",
   "contributors": [],
   "homepage": "https://github.com/jaylim/insight-unihash-ui",
