@@ -24,8 +24,8 @@ angular.module('insight.blocks')
   .factory('Blocks',
     function($resource) {
       return $resource(window.apiPrefix + '/blocks');
-  })
-  .factory('BlockByHeight',
-    function($resource) {
-      return $resource(window.apiPrefix + '/block-index/:blockHeight');
   });
+  // .factory('BlockByHeight',
+  //   function($resource) {
+  //     return $resource(window.apiPrefix + '/block-index/:blockHeight');
+  // });

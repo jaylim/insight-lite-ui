@@ -41,35 +41,60 @@ angular.module('insight')
     };
   })
   .directive('clipCopy', function() {
-    ZeroClipboard.config({
-      moviePath: '/lib/zeroclipboard/ZeroClipboard.swf',
-      trustedDomains: ['*'],
-      allowScriptAccess: 'always',
-      forceHandCursor: true
-    });
+    // ZeroClipboard.config({
+    //   moviePath: 'http://localhost:3001/insight/lib/zeroclipboard/ZeroClipboard.swf',
+    //   swfPath: 'http://localhost:3001/insight/lib/zeroclipboard/ZeroClipboard.swf',
+    //   trustedDomains: ['*'],
+    //   allowScriptAccess: 'always',
+    //   forceHandCursor: true
+    // });
 
     return {
       restric: 'A',
       scope: { clipCopy: '=clipCopy' },
-      template: '<div class="tooltip fade right in"><div class="tooltip-arrow"></div><div class="tooltip-inner">Copied!</div></div>',
+      template: '<div class="tooltip right fade in"><div class="tooltip-arrow"></div><div class="tooltip-inner">Copied!</div></div>',
       link: function(scope, elm) {
-        var clip = new ZeroClipboard(elm);
+        function resetTooltip() {
+          elm.removeClass("is-active");
+        }
 
-        clip.on('load', function(client) {
-          var onMousedown = function(client) {
-            client.setText(scope.clipCopy);
-          };
-
-          client.on('mousedown', onMousedown);
-
-          scope.$on('$destroy', function() {
-            client.off('mousedown', onMousedown);
-          });
+        elm.on("click", function (e) {
+          var i = document.createElement("input");
+          var c = false;
+          i.value = scope.clipCopy;
+          document.body.append(i);
+          i.select();
+          if (document.queryCommandEnabled("copy")) {
+            c = document.execCommand("copy");
+          }
+          i.remove();
+          if (c) {
+            elm.addClass("is-active");
+            setTimeout(resetTooltip, 1000);
+          }
         });
 
-        clip.on('noFlash wrongflash', function() {
-          return elm.remove();
-        });
+        // var clip = new ClipboardJS(elm);
+        // console.log(clip);
+        // var clip = new ZeroClipboard(elm);
+        // console.log(clip);
+
+        // clip.on('load', function(client) {
+        //   var onMousedown = function(client) {
+        //     client.setText(scope.clipCopy);
+        //   };
+
+        //   client.on('mousedown', onMousedown);
+
+        //   scope.$on('$destroy', function() {
+        //     client.off('mousedown', onMousedown);
+        //   });
+        // });
+
+        // clip.on('noFlash wrongflash', function() {
+        //   console.error("wrong flash");
+        //   return elm.remove();
+        // });
       }
     };
   })

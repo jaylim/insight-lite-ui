@@ -10,12 +10,16 @@ angular.module('insight.system').controller('HeaderController',
       symbol: 'UNIH'
     };
 
+    // $scope.menu = [{
+    //   'title': 'Blocks',
+    //   'link': 'blocks'
+    // }, {
+    //   'title': 'Status',
+    //   'link': 'status'
+    // }];
     $scope.menu = [{
       'title': 'Blocks',
       'link': 'blocks'
-    }, {
-      'title': 'Status',
-      'link': 'status'
     }];
 
     $scope.openScannerModal = function() {
