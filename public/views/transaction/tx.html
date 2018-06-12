@@ -1,9 +1,6 @@
 <div class="line-bot row" data-ng-hide="!tx">
   <div class="col-xs-7 col-md-8">
     <div class="ellipsis">
-      <a class="btn-expand" title="Show/Hide items details" data-ng-click="itemsExpanded = !itemsExpanded">
-        <span class="glyphicon glyphicon-plus-sign" data-ng-class="{'glyphicon-minus-sign': itemsExpanded}"></span>
-      </a>
       <span>{{tx.txid}}</span>
       <span class="btn-copy" clip-copy="tx.txid"></span>
     </div>
